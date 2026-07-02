@@ -50,7 +50,7 @@ async function loginUser(req,res){
         ]
     });
     if(!user){
-          res.status(401).jason({message:"invalid credentials"});
+          res.status(401).json({message:"invalid credentials"});
     }
     const isPasswordValid= await bcrypt.compare(password,user.password);
     if(!isPasswordValid){
@@ -63,7 +63,7 @@ async function loginUser(req,res){
 
     },process.env.JWT_SECRET);
     res.cookie("token",token);
-    res.status(201).json({
+    res.status(200).json({
         message:"User login successfuly",
         user:{
             id:user._id,
