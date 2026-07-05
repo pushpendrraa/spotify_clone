@@ -9,6 +9,7 @@ const upload=multer({
 
 const router=express.Router();
 router.post("/upload",upload.single("music"),musiccontroller.createMusic);
+router.post("/createAlbum",musiccontroller.createAlbum);
 
 
 module.exports=router;

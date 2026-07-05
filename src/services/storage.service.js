@@ -1,15 +1,18 @@
- const {ImageKit}=require("@imagekit/nodejs")
+const { ImageKit } = require("@imagekit/nodejs");
 
- const ImageKitclient = new ImageKit({
+const imageKitClient = new ImageKit({
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
-async function uploadFile(file){
-  const result= await ImageLitClient.file.upload({
-    file,
-    fileName:"music_"+Date.now(),
-    folder:"spotify-backend/music"
 
-  })
+async function uploadFile(file){
+  const result = await imageKitClient.upload({
+    file,
+    fileName: "music_"+Date.now(),
+    folder: "spotify-backend/music"
+  });
   return result;
 }
+
 module.exports={uploadFile};
